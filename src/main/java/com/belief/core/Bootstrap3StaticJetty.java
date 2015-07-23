@@ -9,7 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 静态页面访问，跟随着更多的注解内容，该类不可用
+ * 静态页面访问，保证项目的正常运行，该类需放入main，放入test会503错误
  * 
  * @author 于东伟
  *
@@ -26,6 +26,7 @@ public class Bootstrap3StaticJetty {
 		server.setHandler(webapp);
 		logger.info("start......");
 		server.start();
+		logger.debug("join thread pool......");
 		server.join();
 	}
 }
