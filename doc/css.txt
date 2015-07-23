@@ -151,6 +151,170 @@ a:active {background-color:#FF704D;}
 
 
 
+ul {list-style-type : square}
+ul.circle {list-style-type:circle;}
+ul.square {list-style-type:square;}
+ol.upper-roman {list-style-type:upper-roman;}
+ol.lower-alpha {list-style-type:lower-alpha;}
+值						描述
+none					无标记。
+disc					默认。标记是实心圆。
+circle					标记是空心圆。
+square					标记是实心方块。
+decimal					标记是数字。
+decimal-leading-zero	0开头的数字标记。(01, 02, 03, 等。)
+lower-roman				小写罗马数字(i, ii, iii, iv, v, 等。)
+upper-roman				大写罗马数字(I, II, III, IV, V, 等。)
+lower-alpha				小写英文字母The marker is lower-alpha (a, b, c, d, e, 等。)
+upper-alpha				大写英文字母The marker is upper-alpha (A, B, C, D, E, 等。)
+lower-greek				小写希腊字母(alpha, beta, gamma, 等。)
+lower-latin				小写拉丁字母(a, b, c, d, e, 等。)
+upper-latin				大写拉丁字母(A, B, C, D, E, 等。)
+hebrew					传统的希伯来编号方式
+armenian				传统的亚美尼亚编号方式
+georgian				传统的乔治亚编号方式(an, ban, gan, 等。)
+cjk-ideographic			简单的表意数字
+hiragana				标记是：a, i, u, e, o, ka, ki, 等。（日文片假名）
+katakana				标记是：A, I, U, E, O, KA, KI, 等。（日文片假名）
+hiragana-iroha			标记是：i, ro, ha, ni, ho, he, to, 等。（日文片假名）
+katakana-iroha			标记是：I, RO, HA, NI, HO, HE, TO, 等。（日文片假名）
+
+
+
+ul li {list-style-image : url(xxx.gif)}
+
+ul{list-style-position:inside;}
+
+值			描述
+inside		列表项目标记放置在文本以内，且环绕文本根据标记对齐。
+outside		默认值。保持标记位于文本的左侧。列表项目标记放置在文本以外，且环绕文本不根据标记对齐。
+inherit		规定应该从父元素继承 list-style-position 属性的值。
+
+
+list-style 简写属性在一个声明中设置所有的列表属性。
+说明
+该属性是一个简写属性，涵盖了所有其他列表样式属性。由于它应用到所有 display 为 list-item 的元素，所以在普通的 HTML 和 XHTML 中只能用于 li 元素，不过实际上它可以应用到任何元素，并由 list-item 元素继承。
+可以按顺序设置如下属性：
+list-style-type
+list-style-position
+list-style-image
+
+
+//下面显示的框是双线条边框
+table, th, td{
+  border: 1px solid blue;
+}
+
+border-collapse 属性设置是否将表格边框折叠为单一边框：
+
+table{
+  border-collapse:collapse;
+}
+
+
+
+text-align 和 vertical-align 属性设置表格中文本的对齐方式。
+text-align 属性设置水平对齐方式，比如左对齐、右对齐或者居中：
+vertical-align 属性设置垂直对齐方式，比如顶部对齐、底部对齐或居中对齐：
+
+
+border-collapse	设置是否把表格边框合并为单一的边框。
+border-spacing	设置分隔单元格边框的距离。
+caption-side	设置表格标题的位置。
+empty-cells	设置是否显示表格中的空单元格。
+table-layout	设置显示单元、行和列的算法。
+
+
+
+
+css 轮廓
+属性				描述	 
+outline			在一个声明中设置所有的轮廓属性。 
+outline-color	设置轮廓的颜色。 
+outline-style	设置轮廓的样式。 
+outline-width	设置轮廓的宽度。 
+
+
+p{
+  outline-style:dotted;
+}
+值		描述
+none	默认。定义无轮廓。
+dotted	定义点状的轮廓。
+dashed	定义虚线轮廓。
+solid	定义实线轮廓。
+double	定义双线轮廓。双线的宽度等同于 outline-width 的值。
+groove	定义 3D 凹槽轮廓。此效果取决于 outline-color 值。
+ridge	定义 3D 凸槽轮廓。此效果取决于 outline-color 值。
+inset	定义 3D 凹边轮廓。此效果取决于 outline-color 值。
+outset	定义 3D 凸边轮廓。此效果取决于 outline-color 值。
+inherit	规定应该从父元素继承轮廓样式的设置。
+
+
+
+
+
+
+
+
+p.inline{
+  display:inline;
+}
+
+值					描述
+none				此元素不会被显示。
+block				此元素将显示为块级元素，此元素前后会带有换行符。
+inline				默认。此元素会被显示为内联元素，元素前后没有换行符。
+inline-block		行内块元素。（CSS2.1 新增的值）
+list-item			此元素会作为列表显示。
+run-in				此元素会根据上下文作为块级元素或内联元素显示。
+compact				CSS 中有值 compact，不过由于缺乏广泛支持，已经从 CSS2.1 中删除。
+marker				CSS 中有值 marker，不过由于缺乏广泛支持，已经从 CSS2.1 中删除。
+table				此元素会作为块级表格来显示（类似 <table>），表格前后带有换行符。
+inline-table		此元素会作为内联表格来显示（类似 <table>），表格前后没有换行符。
+table-row-group		此元素会作为一个或多个行的分组来显示（类似 <tbody>）。
+table-header-group	此元素会作为一个或多个行的分组来显示（类似 <thead>）。
+table-footer-group	此元素会作为一个或多个行的分组来显示（类似 <tfoot>）。
+table-row			此元素会作为一个表格行显示（类似 <tr>）。
+table-column-group	此元素会作为一个或多个列的分组来显示（类似 <colgroup>）。
+table-column		此元素会作为一个单元格列显示（类似 <col>）
+table-cell			此元素会作为一个表格单元格显示（类似 <td> 和 <th>）
+table-caption		此元素会作为一个表格标题显示（类似 <caption>）
+inherit				规定应该从父元素继承 display 属性的值。
+
+
+
+
+通过使用 position 属性，我们可以选择 4 种不同类型的定位，这会影响元素框生成的方式。
+position 属性值的含义：
+static
+元素框正常生成。块级元素生成一个矩形框，作为文档流的一部分，行内元素则会创建一个或多个行框，置于其父元素中。
+relative
+元素框偏移某个距离。元素仍保持其未定位前的形状，它原本所占的空间仍保留。
+absolute
+元素框从文档流完全删除，并相对于其包含块定位。包含块可能是文档中的另一个元素或者是初始包含块。元素原先在正常文档流中所占的空间会关闭，就好像元素原来不存在一样。元素定位后生成一个块级框，而不论原来它在正常流中生成何种类型的框。
+fixed
+元素框的表现类似于将 position 设置为 absolute，不过其包含块是视窗本身。
+提示：相对定位实际上被看作普通流定位模型的一部分，因为元素的位置相对于它
+
+
+
+
+CSS 相对定位
+相对定位是一个非常容易掌握的概念。如果对一个元素进行相对定位，它将出现在它所在的位置上。然后，可以通过设置垂直或水平位置，让这个元素“相对于”它的起点进行移动。
+如果将 top 设置为 20px，那么框将在原位置顶部下面 20 像素的地方。如果 left 设置为 30 像素，那么会在元素左边创建 30 像素的空间，也就是将元素向右移动。
+在使用相对定位时，无论是否进行移动，元素仍然占据原来的空间。因此，移动元素会导致它覆盖其它框
+
+
+
+
+CSS 绝对定位
+绝对定位使元素的位置与文档流无关，因此不占据空间。这一点与相对定位不同，相对定位实际上被看作普通流定位模型的一部分，因为元素的位置相对于它在普通流中的位置。
+普通流中其它元素的布局就像绝对定位的元素不存在一样：
+绝对定位的元素的位置相对于最近的已定位祖先元素，如果元素没有已定位的祖先元素，那么它的位置相对于最初的包含块。
+对于定位的主要问题是要记住每种定位的意义。所以，现在让我们复习一下学过的知识吧：相对定位是“相对于”元素在文档中的初始位置，而绝对定位是“相对于”最近的已定位祖先元素，如果不存在已定位的祖先元素，那么“相对于”最初的包含块。
+
+
 
 
 

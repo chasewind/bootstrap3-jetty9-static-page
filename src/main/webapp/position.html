@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Position layout page</title>
+<link rel='stylesheet' href="resources/css/bootstrap.min.css">
+<link rel='stylesheet' href="resources/css/bootstrap-theme.min.css">
+<script type="text/javascript" src="resources/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+<style type="text/css">
+body {
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+
+.pDiv {
+	width: 100px;
+	height: 100px;
+	border: 1px solid red;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+#p_relative {
+	width: 60px;
+	height: 60px;
+	border: 1px solid purple;
+	position: relative;
+	left: 30px;
+	top: 20px;
+}
+
+#p_absolute {
+	width: 60px;
+	height: 60px;
+	border: 1px solid yellow;
+	position: absolute;
+	left: 30px;
+	top: 20px;
+}
+
+span {
+	float: left;
+	width: 0.7em;
+	font-size: 400%;
+	font-family: algerian, courier;
+	line-height: 80%;
+}
+
+ul {
+	float: left;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+a {
+	float: left;
+	width: 7em;
+	text-decoration: none;
+	color: white;
+	background-color: purple;
+	padding: 0.2em 0.6em;
+	border-right: 1px solid white;
+}
+
+a:hover {
+	background-color: #ff3300
+}
+
+li {
+	display: inline
+}
+
+div.container {
+	width: 100%;
+	margin: 0px;
+	border: 1px solid gray;
+	line-height: 150%;
+}
+
+div.header, div.footer {
+	padding: 0.5em;
+	color: white;
+	background-color: gray;
+	clear: left;
+}
+
+h1.header {
+	padding: 0;
+	margin: 0;
+}
+
+div.left {
+	float: left;
+	width: 160px;
+	margin: 0;
+	padding: 1em;
+}
+
+div.content {
+	margin-left: 190px;
+	border-left: 1px solid gray;
+	padding: 1em;
+}
+</style>
+<script type="text/javascript">
+	$(function() {
+
+	});
+</script>
+</head>
+<body>
+	<h1>元素定位</h1>
+	<div class="pDiv">
+		<div id="p_relative"></div>
+	</div>
+	<div class="pDiv">
+		<div id="p_absolute">无视页面DIV结构</div>
+	</div>
+
+
+	<p>
+		<img src="resources/images/eg_cute.gif" />
+		如果当我们拥有海量的QQ空间最新说说，和sina微博数据。我想，用它们来做一些股市或者其它方面的分析预测是可行的，准确度应该也是非常高的。我接下来可能会考虑去做这件有趣的事情。
+	</p>
+	<p>
+		<img src="resources/images/eg_cute.gif"
+			style="float: right; border: 1px dotted black; margin: 15px;" />
+		将股票中的关键字做海量数据分析，比如会得出当日讨论股票排行榜。进而能得到海量讨论股票的用户，再通过市场的实际反馈找出股票上涨及下跌的正相关因子，再对这些海量用户进行分析计算得出最靠谱股票推荐大神排行榜。对这些用户分级，分优先度及抓取密度来拿数据。用这些数据分析出哪些是靠谱的股票肯定靠谱。
+	</p>
+	<p>
+		<span>T</span>his is some text. This is some text. This is some text.
+		This is some text. This is some text. This is some text. This is some
+		text. This is some text. This is some text. This is some text. This is
+		some text. This is some text. This is some text. This is some text.
+		This is some text. This is some text. This is some text. This is some
+		text. This is some text. This is some text. This is some text.
+	</p>
+
+
+	<ul>
+		<li><a href="#">Link one</a></li>
+		<li><a href="#">Link two</a></li>
+		<li><a href="#">Link three</a></li>
+		<li><a href="#">Link four</a></li>
+	</ul>
+
+
+	<div class="container">
+
+		<div class="header">
+			<h1 class="header">W3School.com.cn</h1>
+		</div>
+
+		<div class="left">
+			<p>"Never increase, beyond what is necessary, the number of
+				entities required to explain anything." William of Ockham
+				(1285-1349)</p>
+		</div>
+
+		<div class="content">
+			<h2>Free Web Building Tutorials</h2>
+			<p>At W3School.com.cn you will find all the Web-building
+				tutorials you need, from basic HTML and XHTML to advanced XML, XSL,
+				Multimedia and WAP.</p>
+			<p>W3School.com.cn - The Largest Web Developers Site On The Net!</p>
+		</div>
+
+		<div class="footer">Copyright 2008 by YingKe Investment.</div>
+	</div>
+
+
+
+
+</body>
+</html>
