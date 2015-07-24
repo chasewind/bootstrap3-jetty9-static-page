@@ -304,7 +304,7 @@ CSS 相对定位
 相对定位是一个非常容易掌握的概念。如果对一个元素进行相对定位，它将出现在它所在的位置上。然后，可以通过设置垂直或水平位置，让这个元素“相对于”它的起点进行移动。
 如果将 top 设置为 20px，那么框将在原位置顶部下面 20 像素的地方。如果 left 设置为 30 像素，那么会在元素左边创建 30 像素的空间，也就是将元素向右移动。
 在使用相对定位时，无论是否进行移动，元素仍然占据原来的空间。因此，移动元素会导致它覆盖其它框
-
+在使用相对定位时，无论元素是否移动，元素在文档流中占据原来空间，只是表现会改变。
 
 
 
@@ -313,6 +313,140 @@ CSS 绝对定位
 普通流中其它元素的布局就像绝对定位的元素不存在一样：
 绝对定位的元素的位置相对于最近的已定位祖先元素，如果元素没有已定位的祖先元素，那么它的位置相对于最初的包含块。
 对于定位的主要问题是要记住每种定位的意义。所以，现在让我们复习一下学过的知识吧：相对定位是“相对于”元素在文档中的初始位置，而绝对定位是“相对于”最近的已定位祖先元素，如果不存在已定位的祖先元素，那么“相对于”最初的包含块。
+
+绝对定位与文档流无关，所以绝对定位的元素可以覆盖页面上的其他元素，可以通过z-index属性控制叠放顺序，z-index越高，元素位置越靠上。
+
+
+img{
+  float:left;
+  clear:both;
+}
+
+
+值		描述
+left	在左侧不允许浮动元素。
+right	在右侧不允许浮动元素。
+both	在左右两侧均不允许浮动元素。
+none	默认值。允许浮动元素出现在两侧。
+inherit	规定应该从父元素继承 clear 属性的值。
+
+
+
+
+如果需要选择紧接在	 另一个 	元素后的元素，而且二者有相同的父元素，可以使用相邻兄弟选择器（Adjacent sibling selector）
+
+例如，如果要增加紧接在 h1 元素后出现的段落的上边距，可以这样写：
+h1 + p {margin-top:50px;}
+
+
+li + li {color:red;}
+ul li:first-child{color:green;}
+
+
+
+下面的属性可应用于 "first-line" 伪元素：
+font
+color
+background
+word-spacing
+letter-spacing
+text-decoration
+vertical-align
+text-transform
+line-height
+clear
+
+
+
+下面的属性可应用于 "first-letter" 伪元素：
+font
+color
+background
+margin
+padding
+border
+text-decoration
+vertical-align (仅当 float 为 none 时)
+text-transform
+line-height
+float
+clear
+
+
+
+
+
+使用 margin 属性来水平对齐
+.center
+{
+margin-left:auto;
+margin-right:auto;
+width:70%;
+background-color:#b0e0e6;
+}
+使用 position 属性进行左和右对齐
+.right
+{
+position:absolute;
+right:0px;
+width:300px;
+background-color:#b0e0e6;
+}
+
+使用 float 属性来进行左和右对齐
+.right
+{
+float:right;
+width:300px;
+background-color:#b0e0e6;
+}
+
+
+
+图片居中
+添加span元素或者P元素包裹
+
+
+
+
+图片透明度
+img
+{
+	opacity:0.4;
+	filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+img:hover
+{
+	opacity:1.0;
+	filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+
+
+
+
+@media screen{
+	p.test {font-family:verdana,sans-serif; font-size:14px}
+}
+
+@media print{
+	p.test {font-family:times,serif; font-size:10px}
+}
+
+@media screen,print{
+	p.test {font-weight:bold}
+}
+
+媒介类型		描述
+all			用于所有的媒介设备。
+aural		用于语音和音频合成器。
+braille		用于盲人用点字法触觉回馈设备。
+embossed	用于分页的盲人用点字法打印机。
+handheld	用于小的手持的设备。
+print		用于打印机。
+projection	用于方案展示，比如幻灯片。
+screen		用于电脑显示器。
+tty			用于使用固定密度字母栅格的媒介，比如电传打字机和终端。
+tv			用于电视机类型的设备。
 
 
 
