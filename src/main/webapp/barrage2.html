@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>弹幕+留言</title>
+
+<style type="text/css">
+
+body,ul,li {padding:0;margin:0;border:0;}
+img {width:100%;outline-width:0;vertical-align:top;}
+p {margin:0;font-size:12px;}
+
+.content {width: 100%;max-width:480px;background:#eee;margin:0 auto;overflow:hidden;}
+.btn {position:fixed;top:50px;right:50px;z-index:100;padding:5px 15px;font-size:12px;background:red;color:#fff;text-align:center;border-radius:20px;} 
+.comment {visibility:hidden;width: 100%;max-width:480px;height: 120px;top: 100px;position: fixed;z-index: 998;color: #fff;overflow: hidden;}
+.commentScroll {width: 100%;margin: 0;height: 120px;position: relative;}
+.cItem {position: absolute;}
+.cItem div {display: inline-block;vertical-align:middle;}
+.cItem .tcImg {width: 29px;height: 29px;}
+.cItem .tcText {background-color:#000;border-radius:5px;font-size:12px;padding:2px 5px;}
+.cItem div img {width: 25px;height: 25px;border-radius: 50%;border: 2px solid #fff;}
+.cItem p {display: block;background-color: rgba(37,37,37,0.9);font-size: 12px;border-radius: 5px;padding: 2px 10px 2px 15px;white-space: nowrap;margin: 0px;}
+
+.wrapper {width:90%;margin:5%;}
+.wrapper p {line-height:24px;}
+.imgWrapper {width:60%;margin: 0 20%;}
+
+.other {padding: 20px 0;border-top:1px solid #ddd;}
+.other input {border: 1px solid #eb7350;outline:none;}
+.other > div span {display:inline-block;width:20%;text-align:right;}
+.name {margin-bottom:5px;}
+.name input {width:50%;padding:5px 2px 5px 6px;font-size:14px;}
+.tucao input {width:70%;padding:5px 2px 5px 6px;font-size:14px;}
+.plBtn {float:right;padding:5px 15px;background:#ff8140;border:1px solid #fbbd9e;color:#fff;font-size:12px;border-radius:3px;margin: 10px 8% 10px 0;}
+
+.wall {padding-top:20px;margin-top:30px;border-top:1px solid #ddd;}
+.plInfo {color:#eb7350;}
+.wall > div {border-bottom:1px solid #ddd;width:80%;  margin: 0 5% 0 10%;line-height: 20px;padding: 5px 0;font-size: 12px;}
+</style>
+</head>
+
+<body>
+	<div class="content">
+		<div class="wrapper">
+			<h3>别吃了[泪]！研究发现：胖了再瘦几率仅0.08%.</h3>
+			<p>近日，英国公布一项长达10年的研究，表示一旦人们胖起来，就很难恢复到标准身材。严重肥胖的男人只有0.08%恢复健康身材的可能，胖女人也只有0.15%恢复好身材的可能性。拥有身材健康的人们也要注意，坚决不能放纵自己！</p>
+			<div class="imgWrapper"><img src="resources/images/1.jpg" /></div>
+		</div>
+		<div id="btn" class="btn">关弹幕</div>
+		<div class="comment" id="commentArea">
+			<div class="commentScroll">
+			</div>
+		</div>
+		<div class="other">
+			<div class="name"><span>昵称:</span><input id="inputName" type="text" /></div>
+			<div class="tucao"><span>神吐槽:</span><input id="inputSend" type="text" /></div>
+			<div class="plBtn" id="sendBtn">评论</div>
+		</div>
+		<div class="wall" id="wall">
+		</div>
+	</div>
+<!--弹幕处理-->
+<script type="text/javascript" src="resources/js/zepto.js"></script>
+<!--zepto animate-->
+<script type="text/javascript" src="resources/js/fx.js"></script>
+<script>
+var data = [
+	{imgUrl: "http://images11.app.happyjuzi.com/usericonurl/14331496184735.jpg", name:"", text: "哈哈哈哈逗死了吧"},
+	{imgUrl: "http://images11.app.happyjuzi.com/usericonurl/14372808138692.jpg", name:"", text: "胖胖们"},
+	{imgUrl: "http://images11.app.happyjuzi.com/usericonurl/14375459326624.jpg", name:"", text: "瘦瘦们"},
+	{imgUrl: "http://images11.app.happyjuzi.com/usericonurl/14376057946515.jpg", name:"", text: "你觉得胖子好还是瘦子好"},
+	{imgUrl: "http://images11.app.happyjuzi.com/usericonurl/14376057946515.jpg", name:"", text: "胖了容易生病"},
+	{imgUrl: "http://images11.app.happyjuzi.com/usericonurl/14376057946515.jpg", name:"", text: "瘦了也容易生病"},
+	{imgUrl: "http://images11.app.happyjuzi.com/usericonurl/14376057946515.jpg", name:"", text: "不胖不瘦最好"},
+	{imgUrl: "http://images11.app.happyjuzi.com/usericonurl/14372723034526.jpg", name:"", text: "太不像话了"},
+	{imgUrl: "http://images11.app.happyjuzi.com/usericonurl/14376057946515.jpg", name:"", text: "这不是让全世界的胖子都活不下去了吗"},
+	{imgUrl: "http://images11.app.happyjuzi.com/usericonurl/14372694871940.jpg", name:"", text: "减肥是女人一生的事业"},
+	{imgUrl: "http://images11.app.happyjuzi.com/usericonurl/14375532883195.jpg", name:"", text: "控制好饮食，坚持运动"},
+	{imgUrl: "http://wx.qlogo.cn/mmopen/Q3auHgzwzM5DdqRicOyc3yMicVgFiawUicYsuue1w6zWBiaxibqZ6ggh9J234ibuyDJPhrFQia4EUjvRY4hgvG5Sg9NicR1W3lmU4rKFrbKjDEGksq1s/0", name:"", text: "力度不小"},
+	{imgUrl: "http://images11.app.happyjuzi.com/usericonurl/14376060488538.jpg", name:"", text: "牛逼"},
+	{imgUrl: "http://images11.app.happyjuzi.com/usericonurl/14375287815439.jpg", name:"", text: "niublity!"},
+	{imgUrl: "http://images11.app.happyjuzi.com/usericonurl/14375532438616.jpg", name:"", text: "女生正常瘦就好了，嘿嘿。"},
+	{imgUrl: "http://images11.app.happyjuzi.com/usericonurl/14370422335895.jpg", name:"", text: "要是找男朋友，不会找胖子"},
+	{imgUrl: "http://images11.app.happyjuzi.com/usericonurl/14374669519434.jpg", name:"", text: "男朋友瘦成电线杆也不好"},
+];
+var w, elems, l = data.length; 
+
+window.onload = function(){
+	setData(data);	
+	w = $("#commentArea").width();
+	$("#commentArea").css({"visibility": "visible"});
+	barrageAnimate();
+}
+//弹幕数据填充
+function setData(data){
+	$(".commentScroll").empty();
+	var s = "";
+	for(var i=0;i<l;i++){
+		s += '<a class="cItem" id="citem'+i+'">';
+		if(!data[i].imgUrl) {
+			s += '<div class="tcImg"><img src="http://images11.app.happyjuzi.com/usericonurl/14372694871940.jpg"></div>';
+		}else {
+			s += '<div class="tcImg"><img src="'+data[i].imgUrl+'"></div>';
+		}
+		
+		if(!data[i].name) {
+			s += '<div class="tcText">';
+		}else {
+			s += '<div class="tcText"><span class="itemName">'+data[i].name+': </span>';
+		}
+		if(!data[i].text) {
+			s += '</div></a>';
+		}else {
+			s += '<span class="itemText">'+data[i].text+'</span></div></a>';
+		}
+	}
+	$(".commentScroll").append(s);
+}
+//弹幕样式
+function setTop(){
+	elems.each(function(index, item){
+		var e = $(item);
+		if((index+1)%3 == 1){
+			e.css({"top":getRandomNum(5, 25)});	
+		}else if((index+1)%3 == 2){
+			e.css({"top":getRandomNum(40, 60)});	
+		}else if((index+1)%3 == 0){
+			e.css({"top":getRandomNum(75, 90)});	
+		}
+				
+	});
+}
+//开关弹幕
+$("#btn").on("click", function(){
+	if($(this).hasClass("on")){
+		$(this).removeClass("on");
+		$(this).html("关弹幕");
+		$("#commentArea").css({"display": "block"});
+	}else {
+		$(this).addClass("on");
+		$(this).html("开弹幕");
+		$("#commentArea").css({"display": "none"});
+	}
+});
+//弹幕动画
+var j = 0;
+function barrageAnimate(){
+	elems = $(".cItem");
+	elems.css({"left":w, "width": w});
+	setTop();
+	setInterval(function(){
+		var r = Math.floor(Math.random()*2)+1; //[1,3]   每次出现几个弹幕
+		if(j == l || j > l) {j = 0;}
+		if(j < l){
+			for(var k = 0;k < r;k++){
+				$(elems[j]).show().animate({"left": -w},getRandomNum(5,11)*1000, "ease-in", function(){
+					$(elems[j]).css({"left": w});
+				});				
+				j++;
+			}			
+		}
+	}, 1500);
+}
+//获取随机数
+function getRandomNum(Min, Max) {
+    var Range = Max - Min;
+    var Rand = Math.random();
+    return (Min + Math.round(Rand * Range));
+}
+
+</script>
+
+</body>
+</html>

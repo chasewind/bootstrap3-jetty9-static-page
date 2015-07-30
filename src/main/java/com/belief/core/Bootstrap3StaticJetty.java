@@ -1,6 +1,5 @@
 package com.belief.core;
 
-
 import java.util.Arrays;
 
 import org.eclipse.jetty.server.Server;
@@ -19,6 +18,28 @@ public class Bootstrap3StaticJetty {
 
 	public static void main(String[] args) throws Exception {
 		Server server = new Server(8080);
+		// HttpConfiguration http_config = new HttpConfiguration();
+		// http_config.setSecureScheme("https");
+		// http_config.setSecurePort(8443);
+		// http_config.setOutputBufferSize(32768);
+
+		// SslContextFactory sslContextFactory = new SslContextFactory();
+		// sslContextFactory.setKeyStorePath("./path_to_keystore/keystore.p12");
+		// sslContextFactory.setKeyStorePassword("pass");
+		// sslContextFactory.setTrustStorePath("./path_to_truststore/trustore.jks");
+		// sslContextFactory.setTrustStorePassword("changeit");
+		//
+		// HttpConfiguration https_config = new HttpConfiguration(http_config);
+		// https_config.addCustomizer(new SecureRequestCustomizer());
+		//
+		// ServerConnector https = new ServerConnector(server, new
+		// SslConnectionFactory(sslContextFactory, "http/1.1"), new
+		// HttpConnectionFactory(https_config));
+		// https.setPort(8443);
+		// https.setIdleTimeout(500000);
+		//
+		// server.setConnectors(new Connector[] { https });
+
 		WebAppContext webapp = new WebAppContext();
 		webapp.setResourceBase("src/main/webapp");
 		webapp.setContextPath("/");
