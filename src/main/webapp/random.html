@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Random</title>
+<script type="text/javascript" src="resources/js/jquery-1.10.2.min.js"></script>
+<style type="text/css">
+body {
+	margin: 0 0;
+	text-align:center;
+}
+</style>
+<script type="text/javascript">
+$(function(){
+	RandomUtils ={};
+	RandomUtils.getRandomNum=function (Min, Max) {
+	    var Range = Max - Min;
+	    var Rand = Math.random();
+	    return (Min + Math.round(Rand * Range));
+	}
+	setInterval(function(){
+		$("#random").html(RandomUtils.getRandomNum(5,11)*100);
+	}, 1500);
+});
+
+</script>
+</head>
+<body>
+	<h1 id="random"></h1>
+</body>
+</html>
