@@ -1,0 +1,25 @@
+
+
+
+
+
+
+
+keytool -genkey -v -alias serverKey  -dname "CN=jettyServer" -keyalg RSA -sigalg SHA256withRSA -keypass chaseecho -storepass chaseecho -keystore server.keystore -validity 3600
+
+
+ 
+keytool -genkey -v -alias clientKey  -dname "CN=jettyClient" -keyalg RSA -keypass admin123 -storepass admin123 -keystore client.p12 -validity 3600 -storetype PKCS12
+
+ 
+keytool -export -alias clientKey -file clientKey.cer -keystore client.p12 -storepass admin123 -storetype PKCS12
+
+
+
+
+
+
+
+
+
+keytool -import -v -alias clientKey -file clientKey.cer -keystore server.keystore -storepass chaseecho
