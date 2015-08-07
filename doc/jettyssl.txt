@@ -23,3 +23,34 @@ keytool -export -alias clientKey -file clientKey.cer -keystore client.p12 -store
 
 
 keytool -import -v -alias clientKey -file clientKey.cer -keystore server.keystore -storepass chaseecho
+
+
+
+-----------------------------------openssl style---------------------------
+yum install -y lrzsz
+
+Country Name (2 letter code) [XX]:zh
+State or Province Name (full name) []:zhejiang
+Locality Name (eg, city) [Default City]:hangzhou
+Organization Name (eg, company) [Default Company Ltd]:www.kcgiftc.com
+Organizational Unit Name (eg, section) []:www.kcgiftc.com
+Common Name (eg, your name or your server's hostname) []:www.kcgiftc.com
+Email Address []:yudw@kunion.com.cn
+
+
+
+
+openssl req -new -x509 -nodes -days 3560 -out server.crt -keyout server.key
+
+
+
+
+
+
+
+
+
+
+
+
+

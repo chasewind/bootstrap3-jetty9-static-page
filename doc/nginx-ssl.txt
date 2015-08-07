@@ -1,0 +1,152 @@
+
+
+准备工作
+
+安装 工具可以和windows进行文件传递
+	yum install -y lrzsz 或者安装winscp
+
+生成自签名的证书
+	openssl req -new -x509 -nodes -days 3560 -out server.crt -keyout server.key
+	
+	
+nginx配置
+
+
+#user  nobody;
+worker_processes  1;
+
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    keepalive_timeout  65;
+
+	upstream windowProxy {
+          server 127.0.0.1:8080;
+	}
+
+    # HTTPS server
+    #
+    server {
+        listen       9443 ssl;
+        server_name  www.kcgiftc.com;
+
+		ssl on;
+		
+		ssl_certificate      server.crt;
+        ssl_certificate_key  server.key;
+		#ssl_client_certificate  ca.crt; 
+		#ssl_verify_client on;
+		ssl_protocols  SSLv2 SSLv3 TLSv1;
+        ssl_session_cache    shared:SSL:10m;
+        ssl_session_timeout  5m;
+
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+
+        location / {
+            root   html;
+            index  index.html index.htm;
+			proxy_pass http://windowProxy;
+			proxy_set_header Host $server_name;
+			proxy_set_header Cookie "$http_cookie;CAS_SID=$arg_cas_t";
+			proxy_set_header X-Real-IP $remote_addr;
+        }
+    }
+
+}
+
+双向认证
+
+新建目录
+/ouer/sslconfig/ca
+
+建立新的目录
+mkdir newcerts private conf server
+
+/ouer/sslconfig/ca/conf目录下，编辑openssl.conf
+
+[ca]
+default_ca=foo
+[foo]
+dir=/ouer/sslconfig/ca
+database=/ouer/sslconfig/ca/index.txt
+new_certs_dir=/ouer/sslconfig/ca/newcerts
+certificate=/ouer/sslconfig/ca/private/ca.crt
+serial=/ouer/sslconfig/ca/serial
+private_key=/ouer/sslconfig/ca/private/ca.key
+RANDFILE=/ouer/sslconfig/ca/private/.rand
+default_days=3650
+default_crl_days=30
+default_md=md5
+unique_subject=no
+policy=policy_any
+[policy_any]
+countryName=match
+stateOrProvinceName=match
+organizationName=match
+organizationalUnitName=match
+localityName=optional
+commonName=supplied
+emailAddress=optional
+
+
+
+/ouer/sslconfig/ca下编辑脚本
+
+new_ca.sh
+
+#!/bin/sh
+openssl genrsa -out private/ca.key
+openssl req -new -key private/ca.key -out private/ca.csr
+openssl x509 -req -days 3650 -in private/ca.csr -signkey private/ca.key -out private/ca.crt
+echo FACE>serial
+touch index.txt
+openssl ca -gencrl -out /ouer/sslconfig/ca/private/ca.crl -crldays 7 -config "/ouer/sslconfig/ca/conf/openssl.conf"
+
+
+new_server.sh
+
+#!/bin/sh
+openssl genrsa -out server/server.key
+openssl req -new -key server/server.key -out server/server.csr
+openssl ca -in server/server.csr -cert private/ca.crt -keyfile private/ca.key -out server/server.crt -config  "/ouer/sslconfig/ca/conf/openssl.conf"
+
+new_user.sh
+
+#!/bin/sh
+caUserPath="/ouer/sslconfig/ca"
+openssl genrsa -des3 -out $caUserPath/users/client.key 1024
+openssl req -new -key $caUserPath/users/client.key -out $caUserPath/users/client.csr
+openssl ca -in $caUserPath/users/client.csr -cert $caUserPath/private/ca.crt -keyfile $caUserPath/private/ca.key -out $caUserPath/users/client.crt -config "$caUserPath/conf/openssl.conf"
+openssl pkcs12 -export -clcerts -in $caUserPath/users/client.crt -inkey $caUserPath/users/client.key -out $caUserPath/users/client.p12
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
