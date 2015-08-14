@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js call mode</title>
+<script type="text/javascript" src="resources/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+	(function() {
+		Math.RandomNumbers = function(startNum, endNum, count) {
+			var ret = [];
+			for (var i = 0; i < count; i++) {
+				var tmp = startNum + Math.random() * (endNum - startNum);
+				ret[i] = parseInt(tmp);
+			}
+			return ret;
+		}
+	})();
+
+	var commonCount = 1;
+	var commonArray = [];
+	function dotask(num) {
+		console.log("---------");
+		commonWork.call(null, num);
+		for(var i=0;i<2;i++){
+			gen();
+			second.call(null);
+		}
+	}
+	function gen(){
+		commonArray = Math.RandomNumbers(1, 100, 6);
+	}
+	function commonWork(num) {
+		console.log('===='+num);
+		console.log(commonCount++);
+	}
+	function second() {
+		if (commonArray) {
+			console.log(commonArray);
+			for (var i = 0, len = commonArray.length; i < len; i++) {
+				commonWork.call(null, commonArray[i]);
+			}
+		}
+	}
+
+	(function start() {
+		var para = [ 1, 2, 3, 4, 5 ];
+		for (var i = 0, len = para.length; i < len; i++) {
+			dotask.call(null, para[i]);
+		}
+
+	}());
+</script>
+</head>
+<body>
+
+</body>
+</html>

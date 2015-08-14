@@ -1,5 +1,5 @@
 
-
+http://blog.csdn.net/kunoy/article/details/8239653
 准备工作
 
 安装 工具可以和windows进行文件传递
@@ -7,7 +7,6 @@
 
 生成自签名的证书
 	openssl req -new -x509 -nodes -days 3560 -out server.crt -keyout server.key
-	
 	
 nginx配置
 
@@ -119,14 +118,14 @@ openssl ca -gencrl -out /ouer/sslconfig/ca/private/ca.crl -crldays 7 -config "/o
 
 new_server.sh
 
-#!/bin/sh
+#!/bin/shxitx
 openssl genrsa -out server/server.key
 openssl req -new -key server/server.key -out server/server.csr
 openssl ca -in server/server.csr -cert private/ca.crt -keyfile private/ca.key -out server/server.crt -config  "/ouer/sslconfig/ca/conf/openssl.conf"
 
 new_user.sh
 
-#!/bin/sh
+#!/bin/shZ
 caUserPath="/ouer/sslconfig/ca"
 openssl genrsa -des3 -out $caUserPath/users/client.key 1024
 openssl req -new -key $caUserPath/users/client.key -out $caUserPath/users/client.csr

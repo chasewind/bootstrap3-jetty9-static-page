@@ -1,0 +1,21 @@
+17:17:54,068 |-INFO in ch.qos.logback.classic.LoggerContext[jetty-webapp-static] - Could NOT find resource [logback.groovy]
+17:17:54,068 |-INFO in ch.qos.logback.classic.LoggerContext[jetty-webapp-static] - Found resource [logback-test.xml] at [file:/D:/Users/ThinkPad/git/bootstrap3-jetty9-static-page/target/classes/logback-test.xml]
+17:17:54,131 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - debug attribute not set
+17:17:54,138 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Setting ReconfigureOnChangeFilter scanning period to 3 seconds
+17:17:54,138 |-INFO in ReconfigureOnChangeFilter{invocationCounter=0} - Will scan for changes in [[D:\Users\ThinkPad\git\bootstrap3-jetty9-static-page\target\classes\logback-test.xml]] every 3 seconds. 
+17:17:54,138 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - Adding ReconfigureOnChangeFilter as a turbo filter
+17:17:54,142 |-INFO in ch.qos.logback.classic.joran.action.ContextNameAction - Setting logger context name as [jetty-webapp-static]
+17:17:54,142 |-INFO in ch.qos.logback.classic.joran.action.JMXConfiguratorAction - begin
+17:17:54,187 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - About to instantiate appender of type [ch.qos.logback.core.ConsoleAppender]
+17:17:54,191 |-INFO in ch.qos.logback.core.joran.action.AppenderAction - Naming appender as [STDOUT]
+17:17:54,256 |-WARN in ch.qos.logback.core.ConsoleAppender[STDOUT] - This appender no longer admits a layout as a sub-component, set an encoder instead.
+17:17:54,256 |-WARN in ch.qos.logback.core.ConsoleAppender[STDOUT] - To ensure compatibility, wrapping your layout in LayoutWrappingEncoder.
+17:17:54,256 |-WARN in ch.qos.logback.core.ConsoleAppender[STDOUT] - See also http://logback.qos.ch/codes.html#layoutInsteadOfEncoder for details
+17:17:54,256 |-INFO in ch.qos.logback.classic.joran.action.LoggerAction - Setting level of logger [com.belief] to DEBUG
+17:17:54,256 |-INFO in ch.qos.logback.core.joran.action.AppenderRefAction - Attaching appender named [STDOUT] to Logger[com.belief]
+17:17:54,257 |-INFO in ch.qos.logback.classic.joran.action.ConfigurationAction - End of configuration.
+17:17:54,257 |-INFO in ch.qos.logback.classic.joran.JoranConfigurator@2c1b3114 - Registering current configuration as safe fallback point
+
+2015-08-14 17:17:54.811 [main] INFO  com.belief.crawler.SinaTask -begin task...2015-08-14 17:17:54
+秋晚的地盘的微博_微博
+认证：未认证

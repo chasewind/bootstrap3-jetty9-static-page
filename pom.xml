@@ -8,7 +8,7 @@
 	<properties>
 		<spring.version>4.1.6.RELEASE</spring.version>
 		<jetty.version>9.2.12.M0</jetty.version>
-<!-- 		<jetty.version>9.3.0.v20150612</jetty.version> -->
+		<!-- <jetty.version>9.3.0.v20150612</jetty.version> -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
@@ -92,6 +92,24 @@
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
 			<version>1.8</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.8.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3.1</version>
 		</dependency>
 	</dependencies>
 	<build>

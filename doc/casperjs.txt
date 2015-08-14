@@ -1,0 +1,23 @@
+
+
+
+在官网下载
+https://bitbucket.org/ariya/phantomjs/downloads
+上传到linux
+解压
+tar xvfj phantomjs-1.9.8-linux-x86_64.tar.bz2 
+重命名
+ mv phantomjs-1.9.8-linux-x86_64 phantomjs
+ 软链加入环境变量中
+  ln -sf  /ouer/js/phantomjs/bin/phantomjs /usr/local/bin/phantomjs
+ 测试
+ phantomjs --version
+ 
+ 
+git clone git://github.com/n1k0/casperjs.git 
+
+ 软链加入环境变量中
+ln -sf /ouer/js/casperjs/bin/casperjs /usr/local/bin/casperjs 
+
+ 测试
+casperjs --version
