@@ -17,51 +17,50 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * 
  */
 public class JsonUtils {
-	private static Logger log = LoggerFactory.getLogger(JsonUtils.class);
+    private static Logger log = LoggerFactory.getLogger(JsonUtils.class);
 
-	/**
-	 * JSON转换为List对象
-	 * 
-	 * @throws IOException
-	 * @throws JsonMappingException
-	 */
-	public static <T> T json2Object(String json, Class<T> clazz) {
-		if (StringUtils.isBlank(json)) {
-			return null;
-		}
-		ObjectMapper objectMapper = new ObjectMapper();
-		// 反序列化字段，避免新增字段后无法解析
-		objectMapper.configure(
-				DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		T obj = null;
-		try {
-			obj = (T) objectMapper.readValue(json, clazz);
-		} catch (JsonParseException e) {
-			log.error(e.getMessage(), e);
-		} catch (JsonMappingException e) {
-			log.error(e.getMessage(), e);
-		} catch (IOException e) {
-			log.error(e.getMessage(), e);
-		} catch (Exception e) {
-			log.error(e.getMessage(), e);
-		}
+    /**
+     * JSON转换为List对象
+     * 
+     * @throws IOException
+     * @throws JsonMappingException
+     */
+    public static <T> T json2Object(String json, Class<T> clazz) {
+        if (StringUtils.isBlank(json)) {
+            return null;
+        }
+        ObjectMapper objectMapper = new ObjectMapper();
+        // 反序列化字段，避免新增字段后无法解析
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        T obj = null;
+        try {
+            obj = (T) objectMapper.readValue(json, clazz);
+        } catch (JsonParseException e) {
+            log.error(e.getMessage(), e);
+        } catch (JsonMappingException e) {
+            log.error(e.getMessage(), e);
+        } catch (IOException e) {
+            log.error(e.getMessage(), e);
+        } catch (Exception e) {
+            log.error(e.getMessage(), e);
+        }
 
-		return obj;
-	}
+        return obj;
+    }
 
-	/**
-	 * list 转换成json
-	 * 
-	 * @param
-	 * @return
-	 * @throws IOException
-	 */
-	public static String object2Json(Object object) throws IOException {
-		if (object == null) {
-			return "";
-		}
-		ObjectMapper objectMapper = new ObjectMapper();
-		return objectMapper.writeValueAsString(object);
-	}
+    /**
+     * list 转换成json
+     * 
+     * @param
+     * @return
+     * @throws IOException
+     */
+    public static String object2Json(Object object) throws IOException {
+        if (object == null) {
+            return "";
+        }
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(object);
+    }
 
 }

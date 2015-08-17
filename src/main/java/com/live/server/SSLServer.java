@@ -1,4 +1,4 @@
-package come.live.server;
+package com.live.server;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
