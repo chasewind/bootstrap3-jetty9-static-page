@@ -104,7 +104,7 @@ emailAddress=optional
 
 
 /ouer/sslconfig/ca下编辑脚本
-
+//创建根证书
 new_ca.sh
 
 #!/bin/sh
@@ -134,18 +134,31 @@ openssl pkcs12 -export -clcerts -in $caUserPath/users/client.crt -inkey $caUserP
 
 
 
+----------------------------------
+keytool -genkey -v -alias bosServerKey  -dname "CN=10.8.200.62" -keyalg RSA  -keypass chaseecho -storepass chaseecho  -keystore server.keystore -keysize 2048
 
 
 
+keytool -certreq -keyalg RSA -alias bosServerKey -file server.csr -keystore server.keystore -storepass chaseecho
 
 
 
+--------------------------------------------------------------------------
+ openssl genrsa -des3 -out server.key 2046
+
+
+#IE浏览器需要p12证书，所以需要签发p12证书，用于IE签发:
+openssl pkcs12 -export -clcerts -in client.crt -inkey client.key -out client.p12
+#IOS 证书签发格式
+openssl x509 -in client.crt -out client.cer
+#Android 证书签发格式
+openssl pkcs12 -export -in client.crt -inkey client.key -out  client.pfx
+#pem格式证书
+openssl pkcs12 -export -in ddmdd_a.pfx -out client.pem
 
 
 
-
-
-
+openssl pkcs12 -export  -in /ouer/sslconfig/ca/users/client.crt -inkey /ouer/sslconfig/ca/users/client.key -out /ouer/sslconfig/ca/users/client.p12
 
 
 

@@ -2,6 +2,9 @@ package com.belief.crawler;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
@@ -18,7 +21,7 @@ import com.belief.utils.DateUtils;
 public abstract class TaskHandlerCenter<Target, Result> {
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 	protected static final PageDownLoader downLoader = new SinaDownloader();
-
+	private static Executor executor = new ScheduledThreadPoolExecutor(10);
 	public TaskHandlerCenter() {
 		init();
 	}
@@ -51,17 +54,36 @@ public abstract class TaskHandlerCenter<Target, Result> {
 		List<Result> results = new ArrayList<Result>();
 		logger.info("begin task..." + DateUtils.getCurrentTime());
 		if (CollectionUtils.isNotEmpty(list)) {
+			CountDownLatch latch = new CountDownLatch(list.size());
 			for (Target target : list) {
-				// 处理当前页面数据
-				Result result = fetchData(target);
-				if (result != null) {
-					results.add(result);
-				}
+				executor.execute(new CrawlerThread(target, results, latch));
 			}
 
 		}
 		logger.info("end task..." + DateUtils.getCurrentTime());
 		return results;
+	}
+
+	class CrawlerThread implements Runnable {
+		Target target;
+		List<Result> results;
+		CountDownLatch latch;
+
+		public CrawlerThread(Target target, List<Result> results, CountDownLatch latch) {
+			this.target = target;
+			this.results = results;
+			this.latch = latch;
+		}
+
+		@Override
+		public void run() {
+			Result result = fetchData(target);
+			if (result != null) {
+				results.add(result);
+			}
+			latch.countDown();
+		}
+
 	}
 
 }
