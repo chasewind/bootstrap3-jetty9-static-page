@@ -118,14 +118,14 @@ openssl ca -gencrl -out /ouer/sslconfig/ca/private/ca.crl -crldays 7 -config "/o
 
 new_server.sh
 
-#!/bin/shxitx
+#!/bin/sh
 openssl genrsa -out server/server.key
 openssl req -new -key server/server.key -out server/server.csr
 openssl ca -in server/server.csr -cert private/ca.crt -keyfile private/ca.key -out server/server.crt -config  "/ouer/sslconfig/ca/conf/openssl.conf"
 
 new_user.sh
 
-#!/bin/shZ
+#!/bin/sh
 caUserPath="/ouer/sslconfig/ca"
 openssl genrsa -des3 -out $caUserPath/users/client.key 1024
 openssl req -new -key $caUserPath/users/client.key -out $caUserPath/users/client.csr
