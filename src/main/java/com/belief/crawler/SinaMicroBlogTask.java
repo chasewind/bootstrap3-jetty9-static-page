@@ -13,7 +13,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 /**
- * 新浪微博爬取
+ * 新浪微博爬取，对指定的页面进行爬取
  * 
  * @author yudongwei
  *
