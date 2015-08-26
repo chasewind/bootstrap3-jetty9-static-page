@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <script type="text/javascript">
+            // Internet Explorer specific
+        function OnAbortImage() {
+            var info = document.getElementById ("info");
+            info.innerHTML += "<br />The loading of the image has been aborted.";
+            RemoveEsc();
+        }
+
+        function OnLoadImage() {
+            var info = document.getElementById ("info");
+            info.innerHTML += "<br />The image has been loaded.";
+            RemoveEsc();
+        }
+
+            // Internet Explorer specific
+        function OnStateChangeImage(image) {
+            var info = document.getElementById ("info");
+            info.innerHTML += "<br />readyState: " + image.readyState;
+        }
+
+        function RemoveEsc() {
+            var esc = document.getElementById("esc");
+            esc.parentNode.removeChild (esc);
+        }
+    </script>
+</head>
+<body>
+    <span id="info" style="color:red">The image is loading.</span>
+    <br /><br />
+    <span id="esc">Press the Escape key to abort the process.</span>
+    <br /><br />
+    <img src="large.bmp" width="200px" height="150px" 
+        onabort="OnAbortImage()" onload="OnLoadImage()" onreadystatechange="OnStateChangeImage(this)" />
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+ <script type="text/javascript">
+            // Internet Explorer and Opera
+        document.onreadystatechange = WaitForComplete;
+        
+        function WaitForComplete () {
+            alert ("The state of the document: " + document.readyState);
+        }
+        
+        function OnLoad () {
+            alert ("The document has been loaded.");
+        }
+    </script>
+</head>
+<body onload="OnLoad()">
+</body>
+</html>

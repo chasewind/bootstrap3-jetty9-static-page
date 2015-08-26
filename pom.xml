@@ -12,6 +12,20 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+	<organization>
+		<name>kunion</name>
+		<url>http://www.kunion.com.ccn</url>
+	</organization>
+
+	<developers>
+		<developer>
+			<id>yudw</id>
+			<name>Yu Dongwei</name>
+			<email>yudw@kunion.com.cn</email>
+			<organization>kunion</organization>
+			<organizationUrl>http://www.kunion.com.ccn</organizationUrl>
+		</developer>
+	</developers>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -119,18 +133,14 @@
 			<classifier>jdk15</classifier>
 		</dependency>
 
-<!-- 		<dependency> -->
-<!-- 			<groupId>edu.uci.ics</groupId> -->
-<!-- 			<artifactId>crawler4j</artifactId> -->
-<!-- 			<version>4.1</version> -->
-<!-- 		</dependency> -->
+
 	</dependencies>
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
+				<version>3.3</version>
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
