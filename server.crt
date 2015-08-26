@@ -1,0 +1,51 @@
+Certificate:
+    Data:
+        Version: 1 (0x0)
+        Serial Number: 64206 (0xface)
+    Signature Algorithm: md5WithRSAEncryption
+        Issuer: C=zh, ST=zhejiang, L=hangzhou, O=www.kunion.com.cn, OU=www.kunion.com.cn, CN=www.kunion.com.cn/emailAddress=ca@www.kunion.com.cn
+        Validity
+            Not Before: Aug 18 13:55:00 2015 GMT
+            Not After : Aug 15 13:55:00 2025 GMT
+        Subject: C=zh, ST=zhejiang, O=www.kunion.com.cn, OU=www.kunion.com.cn, L=hangzhou, CN=www.kunion.com.cn/emailAddress=server@www.kunion.com.cn
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (1024 bit)
+                Modulus:
+                    00:b0:79:98:b3:21:ec:e6:4c:b8:1d:f6:84:c8:69:
+                    bf:b5:0e:73:79:cd:e6:3b:56:57:b1:ec:78:76:6e:
+                    e9:97:c2:a5:68:76:77:72:8e:ce:4b:74:13:b2:c8:
+                    11:55:8a:3f:d6:6a:b3:80:1f:eb:da:f6:16:ce:91:
+                    e3:d8:57:cf:9a:b0:5d:ad:b9:dc:51:ef:7c:ac:b2:
+                    d8:d7:20:34:84:66:f8:8c:b9:53:ff:15:e6:88:01:
+                    03:b3:d7:bc:df:6b:45:ab:b7:d2:8c:af:33:e2:61:
+                    42:e8:8a:a2:ad:e4:2e:ca:dc:67:63:61:43:8b:3e:
+                    6d:11:6b:26:16:d6:14:39:7f
+                Exponent: 65537 (0x10001)
+    Signature Algorithm: md5WithRSAEncryption
+         36:56:ca:d9:0b:16:f5:2e:f9:c9:e3:26:89:36:2e:a7:6f:7e:
+         f0:42:c5:22:a7:6a:f1:64:45:10:9f:15:c2:53:69:4c:78:75:
+         82:db:59:eb:31:69:dc:1c:fd:1a:bb:7c:04:92:33:e8:42:03:
+         a2:10:5d:c9:4f:2d:69:54:7c:83:f7:f2:f8:d1:b4:d7:b8:23:
+         ef:a4:43:8e:66:ab:f6:74:97:71:9e:f8:d2:39:54:2d:2d:8d:
+         9b:b4:cc:ef:c9:43:eb:bd:ad:15:27:e7:df:b4:50:4b:a8:67:
+         70:65:0c:66:cd:5c:48:bd:ec:bf:71:f0:c4:9d:43:83:43:39:
+         47:e3
+-----BEGIN CERTIFICATE-----
+MIICzzCCAjgCAwD6zjANBgkqhkiG9w0BAQQFADCBrDELMAkGA1UEBhMCemgxETAP
+BgNVBAgMCHpoZWppYW5nMREwDwYDVQQHDAhoYW5nemhvdTEaMBgGA1UECgwRd3d3
+Lmt1bmlvbi5jb20uY24xGjAYBgNVBAsMEXd3dy5rdW5pb24uY29tLmNuMRowGAYD
+VQQDDBF3d3cua3VuaW9uLmNvbS5jbjEjMCEGCSqGSIb3DQEJARYUY2FAd3d3Lmt1
+bmlvbi5jb20uY24wHhcNMTUwODE4MTM1NTAwWhcNMjUwODE1MTM1NTAwWjCBsDEL
+MAkGA1UEBhMCemgxETAPBgNVBAgMCHpoZWppYW5nMRowGAYDVQQKDBF3d3cua3Vu
+aW9uLmNvbS5jbjEaMBgGA1UECwwRd3d3Lmt1bmlvbi5jb20uY24xETAPBgNVBAcM
+CGhhbmd6aG91MRowGAYDVQQDDBF3d3cua3VuaW9uLmNvbS5jbjEnMCUGCSqGSIb3
+DQEJARYYc2VydmVyQHd3dy5rdW5pb24uY29tLmNuMIGfMA0GCSqGSIb3DQEBAQUA
+A4GNADCBiQKBgQCweZizIezmTLgd9oTIab+1DnN5zeY7Vlex7Hh2bumXwqVodndy
+js5LdBOyyBFVij/WarOAH+va9hbOkePYV8+asF2tudxR73ysstjXIDSEZviMuVP/
+FeaIAQOz17zfa0Wrt9KMrzPiYULoiqKt5C7K3GdjYUOLPm0RayYW1hQ5fwIDAQAB
+MA0GCSqGSIb3DQEBBAUAA4GBADZWytkLFvUu+cnjJok2LqdvfvBCxSKnavFkRRCf
+FcJTaUx4dYLbWesxadwc/Rq7fASSM+hCA6IQXclPLWlUfIP38vjRtNe4I++kQ45m
+q/Z0l3Ge+NI5VC0tjZu0zO/JQ+u9rRUn59+0UEuoZ3BlDGbNXEi97L9x8MSdQ4ND
+OUfj
+-----END CERTIFICATE-----
