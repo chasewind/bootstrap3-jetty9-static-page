@@ -21,3 +21,21 @@ ln -sf /ouer/js/casperjs/bin/casperjs /usr/local/bin/casperjs
 
  测试
 casperjs --version
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
