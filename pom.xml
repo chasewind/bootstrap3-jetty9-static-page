@@ -26,6 +26,13 @@
 			<organizationUrl>http://www.kunion.com.ccn</organizationUrl>
 		</developer>
 	</developers>
+	<repositories>
+		<repository>
+			<id>sonatype repository</id>
+			<url>https://oss.sonatype.org/content/repositories/opensymphony-releases</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -132,8 +139,11 @@
 			<version>2.4</version>
 			<classifier>jdk15</classifier>
 		</dependency>
-
-
+		<dependency>
+			<groupId>net.sourceforge.groboutils</groupId>
+			<artifactId>groboutils-core</artifactId>
+			<version>5</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
