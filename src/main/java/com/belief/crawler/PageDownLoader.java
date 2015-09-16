@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 public abstract class PageDownLoader {
 	protected Logger logger = LoggerFactory.getLogger(getClass());
 	public CloseableHttpClient httpclient;
+	public static RequestConfig defaultRequestConfig = RequestConfig.custom().setSocketTimeout(10000).setConnectTimeout(10000).setConnectionRequestTimeout(10000).build();
 
 	public RequestConfig config;
 
